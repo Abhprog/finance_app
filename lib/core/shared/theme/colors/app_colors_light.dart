@@ -1,9 +1,10 @@
+import 'package:finance_app/core/shared/theme/colors/base_app_colors.dart';
 import 'package:flutter/material.dart' show Colors, Color;
 
 class AppColorsLight {
   AppColorsLight._();
 
-  static const primaryColor = Colors.deepPurple;
+  static const primaryColor = BaseAppColors.primaryColor;
   static const secondaryColor = Color(0xFF4B4F54);
   static const onPrimary = Color(0xFF481F8D);
   static const white = Colors.white;

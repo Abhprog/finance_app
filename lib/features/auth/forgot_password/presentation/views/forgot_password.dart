@@ -40,7 +40,7 @@ class _SignupnScreenState extends State<ForgotPasswordScreen> {
 
   void _verifyEmailAndSendCode() {
     if (_formKey.currentState!.validate()) {
-      final email = _emailController.text;
+      // final email = _emailController.text;
     }
   }
 
@@ -67,6 +67,7 @@ class _SignupnScreenState extends State<ForgotPasswordScreen> {
               style: Theme.of(context).textTheme.titleMedium,
             ),
             SizedBox(height: 20.h),
+
             CustomTextField(
               controller: _emailController,
               textFieldType: TextInputType.emailAddress,
@@ -85,8 +86,8 @@ class _SignupnScreenState extends State<ForgotPasswordScreen> {
                 return null;
               },
             ),
-
             SizedBox(height: 10.h),
+
             PrimaryButtonWidget(
               text: 'Check',
               onPressed: _verifyEmailAndSendCode,

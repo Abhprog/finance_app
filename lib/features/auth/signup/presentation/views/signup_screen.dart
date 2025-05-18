@@ -70,7 +70,7 @@ class _SignupnScreenState extends State<SignupScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Spacer(),
-            HeadlineTextWidget(text: "Welcome Back Again!"),
+            HeadlineTextWidget(text: "Sign Up"),
             SizedBox(height: 40.h),
             CustomTextField(
               controller: _firstNameController,
