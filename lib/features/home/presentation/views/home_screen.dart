@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: <Widget>[
           PrimaryButtonWidget(text: 'Login', onPressed: () {}),
           const SizedBox(height: 10),
-          CustomOutlinedButtonWidget(text: 'Sign Up', onPressed: () {}),
+          PrimaryOutlinedButtonWidget(text: 'Sign Up', onPressed: () {}),
           const SizedBox(height: 10),
           CustomTextField(
             hintText: 'Enter email',

@@ -130,6 +130,10 @@ InputDecorationTheme _getInputDecorationTheme() {
       borderRadius: BorderRadius.circular(8.r),
       borderSide: BorderSide(color: AppColorsDark.primaryColor, width: 3),
     ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8.r),
+      borderSide: BorderSide(color: AppColorsDark.primaryColor, width: 3),
+    ),
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8.r),
       borderSide: BorderSide(color: AppColorsDark.errorColor, width: 1.5),

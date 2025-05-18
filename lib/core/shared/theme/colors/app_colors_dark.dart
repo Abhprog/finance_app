@@ -3,7 +3,7 @@ import 'package:flutter/material.dart' show Colors, Color;
 class AppColorsDark {
   AppColorsDark._();
 
-  static const primaryColor = Colors.deepPurple;
+  static const primaryColor = Colors.red;
   static const secondaryColor = Color(0xFF939CA5);
   static const scaffoldBackgroundColor = Color(0xFF121212);
   static const white = Colors.white;

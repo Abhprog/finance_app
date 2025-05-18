@@ -1,5 +1,5 @@
-import 'package:finance_app/core/routing/app_routes.dart';
-import 'package:finance_app/core/routing/router_manager.dart';
+import 'package:finance_app/core/routing/router_manager.dart'
+    show AppRouterManager;
 import 'package:flutter/material.dart'
     show
         AppBar,
@@ -9,48 +9,44 @@ import 'package:flutter/material.dart'
         Form,
         FormState,
         GlobalKey,
+        MainAxisAlignment,
         SizedBox,
         Spacer,
         State,
         StatefulWidget,
+        Text,
+        TextAlign,
         TextEditingController,
         TextInputType,
+        Theme,
         Widget;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../core/shared/widgets/account_action_text_button.dart';
 import '../../../../../../core/shared/widgets/custom_scaffold.dart';
-import '../../../../../../core/shared/widgets/headline_text_widget.dart';
 import '../../../../../../core/shared/widgets/primary_button_widget.dart';
 import '../../../../../../core/shared/widgets/text_field_widget.dart';
-import '../widgets/forgot_password.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class ForgotPasswordScreen extends StatefulWidget {
+  const ForgotPasswordScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<ForgotPasswordScreen> createState() => _SignupnScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupnScreenState extends State<ForgotPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
 
-  void _login() {
+  void _verifyEmailAndSendCode() {
     if (_formKey.currentState!.validate()) {
-      final email = _emailController.text.trim();
-      final password = _passwordController.text;
-
-      // TODO: Replace with your actual login logic
-      print('Logging in with: $email | $password');
+      final email = _emailController.text;
     }
   }
 
   @override
   void dispose() {
     _emailController.dispose();
-    _passwordController.dispose();
     super.dispose();
   }
 
@@ -61,14 +57,20 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Form(
         key: _formKey,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Spacer(),
-            HeadlineTextWidget(text: "Welcome Back Again!"),
-            SizedBox(height: 40.h),
+            Text(
+              "Enter email linked to your account to reset your password.",
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            SizedBox(height: 20.h),
             CustomTextField(
               controller: _emailController,
-              hintText: 'Enter email',
+              textFieldType: TextInputType.emailAddress,
+              hintText: 'Email',
               onChanged: (val) {},
               validator: (val) {
                 final emailRegex = RegExp(
@@ -83,31 +85,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 return null;
               },
             ),
-            CustomTextField(
-              controller: _passwordController,
-              textFieldType: TextInputType.visiblePassword,
-              hintText: 'Enter password',
-              onChanged: (val) {},
-              validator: (val) {
-                if (val == null || val.length < 6) {
-                  return 'Password must be at least 6 characters';
-                }
-                return null;
-              },
+
+            SizedBox(height: 10.h),
+            PrimaryButtonWidget(
+              text: 'Check',
+              onPressed: _verifyEmailAndSendCode,
             ),
-            ForgotPasswordTextButton(
-              onPressed:
-                  () =>
-                      AppRouterManager.push(context, AppRoutes.forgotPassword),
-            ),
-            SizedBox(height: 30.h),
-            PrimaryButtonWidget(text: 'Login', onPressed: _login),
             Spacer(),
 
             AccountTextActionButton(
-              text: "Don't have an account?",
-              actionText: "Sign Up",
-              onPressed: () => AppRouterManager.push(context, AppRoutes.signup),
+              text: "Remember Password?",
+              actionText: "Login",
+              onPressed: () => AppRouterManager.pop(context),
             ),
             SizedBox(height: 20.h),
           ],

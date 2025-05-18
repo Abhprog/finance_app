@@ -1,4 +1,3 @@
-import 'package:finance_app/core/routing/app_routes.dart';
 import 'package:finance_app/core/routing/router_manager.dart';
 import 'package:flutter/material.dart'
     show
@@ -23,22 +22,26 @@ import '../../../../../../core/shared/widgets/custom_scaffold.dart';
 import '../../../../../../core/shared/widgets/headline_text_widget.dart';
 import '../../../../../../core/shared/widgets/primary_button_widget.dart';
 import '../../../../../../core/shared/widgets/text_field_widget.dart';
-import '../widgets/forgot_password.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupnScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupnScreenState extends State<SignupScreen> {
   final _formKey = GlobalKey<FormState>();
+  final _firstNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _repeatPasswordController = TextEditingController();
 
-  void _login() {
+  void _signup() {
     if (_formKey.currentState!.validate()) {
+      // final firstName = _firstNameController.text;
+      // final lastName = _lastNameController.text;
       final email = _emailController.text.trim();
       final password = _passwordController.text;
 
@@ -49,8 +52,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void dispose() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+    _repeatPasswordController.dispose();
     super.dispose();
   }
 
@@ -67,8 +73,31 @@ class _LoginScreenState extends State<LoginScreen> {
             HeadlineTextWidget(text: "Welcome Back Again!"),
             SizedBox(height: 40.h),
             CustomTextField(
+              controller: _firstNameController,
+              hintText: 'First Name',
+              onChanged: (val) {},
+              validator: (val) {
+                if (val == null || val.isEmpty) {
+                  return 'First Name is required';
+                }
+                return null;
+              },
+            ),
+            CustomTextField(
+              controller: _lastNameController,
+              hintText: 'Last Name',
+              onChanged: (val) {},
+              validator: (val) {
+                if (val == null || val.isEmpty) {
+                  return 'Last Name is required';
+                }
+                return null;
+              },
+            ),
+            CustomTextField(
               controller: _emailController,
-              hintText: 'Enter email',
+              textFieldType: TextInputType.emailAddress,
+              hintText: 'Email',
               onChanged: (val) {},
               validator: (val) {
                 final emailRegex = RegExp(
@@ -86,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
             CustomTextField(
               controller: _passwordController,
               textFieldType: TextInputType.visiblePassword,
-              hintText: 'Enter password',
+              hintText: 'Password',
               onChanged: (val) {},
               validator: (val) {
                 if (val == null || val.length < 6) {
@@ -95,19 +124,26 @@ class _LoginScreenState extends State<LoginScreen> {
                 return null;
               },
             ),
-            ForgotPasswordTextButton(
-              onPressed:
-                  () =>
-                      AppRouterManager.push(context, AppRoutes.forgotPassword),
+            CustomTextField(
+              controller: _repeatPasswordController,
+              textFieldType: TextInputType.visiblePassword,
+              hintText: 'Repeat Password',
+              onChanged: (val) {},
+              validator: (val) {
+                if (val == null || val.length < 6) {
+                  return 'Password must be at least 6 characters';
+                }
+                return null;
+              },
             ),
-            SizedBox(height: 30.h),
-            PrimaryButtonWidget(text: 'Login', onPressed: _login),
+            SizedBox(height: 20.h),
+            PrimaryButtonWidget(text: 'Sign Up', onPressed: _signup),
             Spacer(),
 
             AccountTextActionButton(
-              text: "Don't have an account?",
-              actionText: "Sign Up",
-              onPressed: () => AppRouterManager.push(context, AppRoutes.signup),
+              text: "Remember Password?",
+              actionText: "Login",
+              onPressed: () => AppRouterManager.pop(context),
             ),
             SizedBox(height: 20.h),
           ],

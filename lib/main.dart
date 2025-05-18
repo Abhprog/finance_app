@@ -34,7 +34,7 @@ class FinanceApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: themeDataLight,
             darkTheme: themeDataDark,
-            themeMode: ThemeMode.dark,
+            themeMode: ThemeMode.light,
             routerConfig: router,
           ),
         );

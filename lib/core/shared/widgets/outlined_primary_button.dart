@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomOutlinedButtonWidget extends StatelessWidget {
+class PrimaryOutlinedButtonWidget extends StatelessWidget {
   final String text;
   final double? width;
   final double? height;
@@ -9,7 +9,7 @@ class CustomOutlinedButtonWidget extends StatelessWidget {
   final Color? color;
   final TextStyle? textstyle;
 
-  const CustomOutlinedButtonWidget({
+  const PrimaryOutlinedButtonWidget({
     super.key,
     required this.text,
     required this.onPressed,
