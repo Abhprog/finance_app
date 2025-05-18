@@ -1,3 +1,4 @@
+import 'package:finance_app/core/routing/router_generation_config.dart';
 import 'package:flutter/material.dart'
     show
         BuildContext,
@@ -12,7 +13,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtilInit;
 
 import 'core/shared/theme/styles/theme_data_dark.dart';
 import 'core/shared/theme/styles/theme_data_light.dart';
-import 'features/login/views/login_screen.dart';
 
 void main() {
   runApp(const FinanceApp());
@@ -29,13 +29,13 @@ class FinanceApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return SafeArea(
-          child: MaterialApp(
+          child: MaterialApp.router(
             title: 'Finance App',
             debugShowCheckedModeBanner: false,
             theme: themeDataLight,
             darkTheme: themeDataDark,
             themeMode: ThemeMode.dark,
-            home: const LoginScreen(),
+            routerConfig: router,
           ),
         );
       },

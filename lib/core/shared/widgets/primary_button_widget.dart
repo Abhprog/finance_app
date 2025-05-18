@@ -29,7 +29,9 @@ class PrimaryButtonWidget extends StatelessWidget {
         backgroundColor: WidgetStatePropertyAll(
           color ?? Theme.of(context).colorScheme.primary,
         ),
-        fixedSize: WidgetStatePropertyAll(Size(width ?? 150.w, height ?? 42.h)),
+        fixedSize: WidgetStatePropertyAll(
+          Size(width ?? 150.w, height ?? (42.h + 10.w)),
+        ),
       ),
       child: Text(
         text,

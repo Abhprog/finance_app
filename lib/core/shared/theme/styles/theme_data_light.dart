@@ -68,14 +68,21 @@ TextButtonThemeData _getTextButtonTheme() {
 InputDecorationTheme _getInputDecorationTheme() {
   return InputDecorationTheme(
     filled: true, // default is false
-    fillColor: AppColorsLight.primaryColor.withAlpha(10),
+    fillColor: AppColorsLight.primaryColor.withAlpha(20),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8.r),
+      borderSide: BorderSide(
+        color: AppColorsLight.primaryColor.shade500,
+        width: 1.5,
+      ),
+    ),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8.r),
       borderSide: BorderSide(color: AppColorsLight.secondaryColor, width: 1.5),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8.r),
-      borderSide: BorderSide(color: AppColorsLight.primaryColor, width: 1.5),
+      borderSide: BorderSide(color: AppColorsLight.primaryColor, width: 3),
     ),
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8.r),
@@ -133,6 +140,7 @@ ColorScheme _getColorScheme() {
   return ColorScheme.light(
     primary: AppColorsLight.primaryColor,
     secondary: AppColorsLight.secondaryColor,
+    onPrimary: AppColorsLight.onPrimary,
     surface: AppColorsLight.scaffoldBackgroundColor,
     error: const Color.fromARGB(255, 199, 35, 65),
   );
@@ -156,7 +164,7 @@ _getHeadline18SmallStyle() {
   return TextStyle(
     fontSize: 18.sp,
     fontWeight: FontWeight.bold,
-    color: AppColorsLight.foregroundColor,
+    color: AppColorsLight.white,
   );
 }
 
@@ -171,8 +179,8 @@ _getHeadline21MediumStyle() {
 _getBody14MediumStyle() {
   return TextStyle(
     fontSize: 14.sp,
-    fontWeight: FontWeight.normal,
-    color: AppColorsLight.foregroundColor,
+    fontWeight: FontWeight.w500,
+    color: AppColorsLight.secondaryColor,
   );
 }
 

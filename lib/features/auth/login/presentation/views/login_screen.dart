@@ -16,11 +16,11 @@ import 'package:flutter/material.dart'
         Widget;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/shared/widgets/account_action_text_button.dart';
-import '../../../core/shared/widgets/custom_scaffold.dart';
-import '../../../core/shared/widgets/headline_text_widget.dart';
-import '../../../core/shared/widgets/primary_button_widget.dart';
-import '../../../core/shared/widgets/text_field_widget.dart';
+import '../../../../../../core/shared/widgets/account_action_text_button.dart';
+import '../../../../../../core/shared/widgets/custom_scaffold.dart';
+import '../../../../../../core/shared/widgets/headline_text_widget.dart';
+import '../../../../../../core/shared/widgets/primary_button_widget.dart';
+import '../../../../../../core/shared/widgets/text_field_widget.dart';
 import '../widgets/forgot_password.dart';
 
 class LoginScreen extends StatefulWidget {

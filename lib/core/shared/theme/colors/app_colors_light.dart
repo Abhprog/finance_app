@@ -4,7 +4,8 @@ class AppColorsLight {
   AppColorsLight._();
 
   static const primaryColor = Colors.deepPurple;
-  static const secondaryColor = Color(0xFF686F77);
+  static const secondaryColor = Color(0xFF4B4F54);
+  static const onPrimary = Color(0xFF481F8D);
   static const white = Colors.white;
   static const black = Colors.black;
   static const scaffoldBackgroundColor = white;
