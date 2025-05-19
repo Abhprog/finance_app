@@ -1,5 +1,7 @@
 import 'package:finance_app/core/routing/app_routes.dart';
 import 'package:finance_app/core/routing/router_manager.dart';
+import 'package:finance_app/core/utils/validation_util.dart'
+    show ValidationUtils;
 import 'package:flutter/material.dart'
     show
         AppBar,
@@ -9,6 +11,8 @@ import 'package:flutter/material.dart'
         Form,
         FormState,
         GlobalKey,
+        Icon,
+        Icons,
         SizedBox,
         Spacer,
         State,
@@ -41,7 +45,6 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_formKey.currentState!.validate()) {
       final email = _emailController.text.trim();
       final password = _passwordController.text;
-
       // TODO: Replace with your actual login logic
       print('Logging in with: $email | $password');
     }
@@ -68,32 +71,18 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(height: 40.h),
             CustomTextField(
               controller: _emailController,
+              textFieldType: TextInputType.emailAddress,
+              prefixIcon: Icons.alternate_email_outlined,
               hintText: 'Enter email',
               onChanged: (val) {},
-              validator: (val) {
-                final emailRegex = RegExp(
-                  r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}',
-                );
-                if (val == null || val.isEmpty) {
-                  return 'Email is required';
-                }
-                if (!emailRegex.hasMatch(val)) {
-                  return 'Enter a valid email';
-                }
-                return null;
-              },
+              validator: ValidationUtils.validateEmail,
             ),
             CustomTextField(
               controller: _passwordController,
               textFieldType: TextInputType.visiblePassword,
               hintText: 'Enter password',
               onChanged: (val) {},
-              validator: (val) {
-                if (val == null || val.length < 6) {
-                  return 'Password must be at least 6 characters';
-                }
-                return null;
-              },
+              validator: ValidationUtils.validatePassword,
             ),
             ForgotPasswordTextButton(
               onPressed:

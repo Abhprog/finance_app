@@ -1,4 +1,19 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show
+        BuildContext,
+        Icon,
+        IconButton,
+        IconData,
+        Icons,
+        InputDecoration,
+        SizedBox,
+        State,
+        StatefulWidget,
+        TextEditingController,
+        TextFormField,
+        TextInputType,
+        Theme,
+        Widget;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -8,7 +23,7 @@ class CustomTextField extends StatefulWidget {
   final double? height;
   final TextEditingController? controller;
   final TextInputType textFieldType;
-  final Icon? prefixIcon;
+  final IconData? prefixIcon;
   final String? Function(String?)? validator;
 
   const CustomTextField({
@@ -45,13 +60,17 @@ class _CustomTextFieldState extends State<CustomTextField> {
             !isShownPassword,
         decoration: InputDecoration(
           prefixIcon:
-              widget.prefixIcon ??
-              Icon(
-                widget.textFieldType == TextInputType.visiblePassword
-                    ? Icons.lock
-                    : Icons.person,
-                color: Theme.of(context).iconTheme.color,
-              ),
+              widget.prefixIcon != null
+                  ? Icon(
+                    widget.prefixIcon,
+                    color: Theme.of(context).iconTheme.color,
+                  )
+                  : Icon(
+                    widget.textFieldType == TextInputType.visiblePassword
+                        ? Icons.lock
+                        : Icons.person,
+                    color: Theme.of(context).iconTheme.color,
+                  ),
           suffixIcon:
               widget.textFieldType == TextInputType.visiblePassword
                   ? IconButton(
