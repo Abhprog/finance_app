@@ -1,4 +1,5 @@
 import 'package:finance_app/core/routing/router_manager.dart';
+import 'package:finance_app/core/utils/validation_util.dart';
 import 'package:flutter/material.dart'
     show
         AppBar,
@@ -76,65 +77,38 @@ class _SignupnScreenState extends State<SignupScreen> {
               controller: _firstNameController,
               hintText: 'First Name',
               onChanged: (val) {},
-              validator: (val) {
-                if (val == null || val.isEmpty) {
-                  return 'First Name is required';
-                }
-                return null;
-              },
+              validator: ValidationUtils.validateFirstName,
             ),
             CustomTextField(
               controller: _lastNameController,
               hintText: 'Last Name',
               onChanged: (val) {},
-              validator: (val) {
-                if (val == null || val.isEmpty) {
-                  return 'Last Name is required';
-                }
-                return null;
-              },
+              validator: ValidationUtils.validateLastName,
             ),
             CustomTextField(
               controller: _emailController,
               textFieldType: TextInputType.emailAddress,
               hintText: 'Email',
               onChanged: (val) {},
-              validator: (val) {
-                final emailRegex = RegExp(
-                  r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}',
-                );
-                if (val == null || val.isEmpty) {
-                  return 'Email is required';
-                }
-                if (!emailRegex.hasMatch(val)) {
-                  return 'Enter a valid email';
-                }
-                return null;
-              },
+              validator: ValidationUtils.validateEmail,
             ),
             CustomTextField(
               controller: _passwordController,
               textFieldType: TextInputType.visiblePassword,
               hintText: 'Password',
               onChanged: (val) {},
-              validator: (val) {
-                if (val == null || val.length < 6) {
-                  return 'Password must be at least 6 characters';
-                }
-                return null;
-              },
+              validator: ValidationUtils.validatePassword,
             ),
             CustomTextField(
               controller: _repeatPasswordController,
               textFieldType: TextInputType.visiblePassword,
               hintText: 'Repeat Password',
               onChanged: (val) {},
-              validator: (val) {
-                if (val == null || val.length < 6) {
-                  return 'Password must be at least 6 characters';
-                }
-                return null;
-              },
+              validator:
+                  (val) => ValidationUtils.validateRepeatPassword(
+                    _repeatPasswordController.text,
+                    _passwordController.text,
+                  ),
             ),
             SizedBox(height: 20.h),
             PrimaryButtonWidget(text: 'Sign Up', onPressed: _signup),
