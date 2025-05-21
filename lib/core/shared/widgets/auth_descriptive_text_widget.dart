@@ -39,18 +39,18 @@ class AuthDescriptiveTextWidget extends StatelessWidget {
         children: [
           HeadlineTextWidget(text: title),
           SizedBox(height: 20.h),
-          AuthTextDescription(description: description),
+          AuthSubtitleTextDescriptionWidget(description: description),
         ],
       ),
     );
   }
 }
 
-class AuthTextDescription extends StatelessWidget {
+class AuthSubtitleTextDescriptionWidget extends StatelessWidget {
   final String description;
   final TextAlign textAlign;
 
-  const AuthTextDescription({
+  const AuthSubtitleTextDescriptionWidget({
     super.key,
     required this.description,
     this.textAlign = TextAlign.center,

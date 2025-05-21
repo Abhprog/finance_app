@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart'
     show
+        ActionIconThemeData,
         AppBarTheme,
         BorderRadius,
         BorderSide,
+        BuildContext,
         ButtonStyle,
         ButtonThemeData,
         Color,
@@ -11,8 +13,10 @@ import 'package:flutter/material.dart'
         ElevatedButton,
         ElevatedButtonThemeData,
         FontWeight,
+        Icon,
         IconButtonThemeData,
         IconThemeData,
+        Icons,
         InputDecorationTheme,
         MaterialTapTargetSize,
         OutlineInputBorder,
@@ -48,6 +52,11 @@ ThemeData themeDataDark = ThemeData(
   ),
   buttonTheme: _getButtonThemeStyle(),
   iconTheme: IconThemeData(color: AppColorsDark.secondaryColor),
+  actionIconTheme: ActionIconThemeData(
+    backButtonIconBuilder: (BuildContext context) {
+      return Icon(Icons.arrow_back_ios, color: AppColorsDark.white);
+    },
+  ),
   iconButtonTheme: _getIconButtonTheme(),
   elevatedButtonTheme: _getElevatedButtonTheme(),
   outlinedButtonTheme: _getOutlinedButtonTheme(),
@@ -162,6 +171,7 @@ AppBarTheme _getAppBarTheme() {
   return AppBarTheme(
     backgroundColor: AppColorsDark.primaryColor,
     foregroundColor: AppColorsDark.white,
+    iconTheme: IconThemeData(color: AppColorsDark.white),
   );
 }
 
