@@ -9,6 +9,7 @@ import 'package:flutter/material.dart'
         Form,
         FormState,
         GlobalKey,
+        Icons,
         SizedBox,
         Spacer,
         State,
@@ -88,6 +89,7 @@ class _SignupnScreenState extends State<SignupScreen> {
             CustomTextField(
               controller: _emailController,
               textFieldType: TextInputType.emailAddress,
+              prefixIcon: Icons.email_outlined,
               hintText: 'Email',
               onChanged: (val) {},
               validator: ValidationUtils.validateEmail,

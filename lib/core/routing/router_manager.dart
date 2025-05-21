@@ -12,7 +12,7 @@ class AppRouterManager {
   /// Private constructor to prevent instantiation.
   AppRouterManager._();
 
-  /// Pushes a new route onto the navigation stack using the given [pageName].
+  /// Pushes a new route onto the navigation stack using the given [pagePath].
   ///
   /// Optionally, an [extra] object can be passed to the new route.
   ///
@@ -20,8 +20,8 @@ class AppRouterManager {
   /// ```dart
   /// AppRouterManager.push(context, '/details', extra: myData);
   /// ```
-  static void push(BuildContext context, String pageName, {Object? extra}) =>
-      context.push(pageName, extra: extra);
+  static void push(BuildContext context, String pagePath, {Object? extra}) =>
+      context.push(pagePath, extra: extra);
 
   /// Pushes a named route onto the navigation stack.
   ///
@@ -53,6 +53,21 @@ class AppRouterManager {
     Object? extra,
   }) => context.pushReplacementNamed(pageName, extra: extra);
 
+  /// Replaces the current route by pushing a path route and removing the previous one.
+  ///
+  /// [pagepath] is the path of the route to push.
+  /// Optionally, an [extra] object can be passed to the new route.
+  ///
+  /// Example:
+  /// ```dart
+  /// AppRouterManager.pushReplacement(context, '/login', extra: myData);
+  /// ```
+  static void pushReplacement(
+    BuildContext context,
+    String pagepath, {
+    Object? extra,
+  }) => context.pushReplacement(pagepath, extra: extra);
+
   /// Navigates directly to a named route, replacing the current route stack.
   ///
   /// [pageName] is the name of the route to navigate to.
@@ -64,6 +79,18 @@ class AppRouterManager {
   /// ```
   static void goNamed(BuildContext context, String pageName, {Object? extra}) =>
       context.goNamed(pageName, extra: extra);
+
+  /// Navigates directly to a a path route, replacing the current route stack.
+  ///
+  /// [pagePath] is the path of the route to navigate to.
+  /// Optionally, an [extra] object can be passed to the new route.
+  ///
+  /// Example:
+  /// ```dart
+  /// AppRouterManager.go(context, '/dashboard', extra: myData);
+  /// ```
+  static void go(BuildContext context, String pagePath, {Object? extra}) =>
+      context.go(pagePath, extra: extra);
 
   /// Pops the top-most route off the navigation stack.
   ///

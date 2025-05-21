@@ -1,7 +1,8 @@
-import 'package:finance_app/features/auth/forgot_password/presentation/views/forgot_password.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/auth/forgot_password/presentation/views/forgot_password.dart';
 import '../../features/auth/login/presentation/views/login_screen.dart';
+import '../../features/auth/otp_verification/presentation/views/otp_verification_screen.dart';
 import '../../features/auth/signup/presentation/views/signup_screen.dart';
 import 'app_routes.dart';
 
@@ -28,6 +29,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: AppRoutes.forgotPassword,
       builder: (context, state) => ForgotPasswordScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.otpCodeVerification,
+      builder: (context, state) => OTPVerificationCodeScreen(),
     ),
     // GoRoute(
     //   path: AppRoutes.settings,
