@@ -72,6 +72,7 @@ class _SignupnScreenState extends State<ForgotPasswordScreen> {
               description:
                   'Enter email linked to your account to reset your password.',
             ),
+            SizedBox(height: 10.h),
             CustomTextField(
               controller: _emailController,
               textFieldType: TextInputType.emailAddress,
