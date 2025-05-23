@@ -1,4 +1,16 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show
+        BorderSide,
+        BuildContext,
+        Color,
+        OutlinedButton,
+        Size,
+        StatelessWidget,
+        Text,
+        TextStyle,
+        Theme,
+        Widget,
+        WidgetStatePropertyAll;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PrimaryOutlinedButtonWidget extends StatelessWidget {

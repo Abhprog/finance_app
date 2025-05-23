@@ -1,3 +1,4 @@
+import 'package:finance_app/features/onboarding/views/onboarding_screen.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/auth/forgot_password/presentation/views/forgot_password.dart';
@@ -14,8 +15,9 @@ import 'app_routes.dart';
 
 final GoRouter router = GoRouter(
   routes: [
+    GoRoute(path: '/', builder: (context, state) => OnBoardingScreen()),
     GoRoute(
-      path: '/',
+      path: AppRoutes.home,
       builder: (context, state) => HomeScreen(title: 'Home Screen'),
       // routes: [
       //   GoRoute(path: 'profile', builder: (context, state) => ProfileScreen()),
