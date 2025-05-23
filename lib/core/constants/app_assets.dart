@@ -1,14 +1,28 @@
+// ignore_for_file: prefer_single_quotes
 class AppAssets {
-  // Icons
-  static const String iconHome = 'assets/icons/icon_home.png';
-  static const String iconProfile = 'assets/icons/icon_profile.png';
-  static const String iconSettings = 'assets/icons/icon_settings.png';
+  AppAssets._();
 
-  // Images
-  static const String imageLogo = 'assets/images/logo.png';
-  static const String imageBackground = 'assets/images/background.png';
+  /// Assets for assetsImagesImage1
+  /// assets/images/image-1.png
+  static const String assetsImagesImage1 = "assets/images/image-1.png";
 
-  // Animations
-  static const String animationLoading = 'assets/animations/loading.json';
-  static const String animationSuccess = 'assets/animations/success.json';
+  /// Assets for assetsImagesImage2
+  /// assets/images/image-2.png
+  static const String assetsImagesImage2 = "assets/images/image-2.png";
+
+  /// Assets for assetsImagesImage3
+  /// assets/images/image-3.png
+  static const String assetsImagesImage3 = "assets/images/image-3.png";
+
+  /// Assets for assetsImagesImage4
+  /// assets/images/image-4.png
+  static const String assetsImagesImage4 = "assets/images/image-4.png";
+
+  /// Assets for assetsLangAr
+  /// assets/lang/ar.json
+  static const String assetsLangAr = "assets/lang/ar.json";
+
+  /// Assets for assetsLangEn
+  /// assets/lang/en.json
+  static const String assetsLangEn = "assets/lang/en.json";
 }

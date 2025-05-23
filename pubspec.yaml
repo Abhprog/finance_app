@@ -41,6 +41,7 @@ dependencies:
   go_router: ^15.1.2
   pin_code_fields: ^8.0.1
   flutter_timer_countdown: ^1.0.7
+  concentric_transition: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -94,3 +95,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+flutter_assets:
+  assets_path: assets/
+  output_path: lib/core/constants/
+  filename: app_assets.dart
