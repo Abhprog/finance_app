@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart'
     show
         AppBar,
+        BottomNavigationBar,
         BuildContext,
         Center,
-        EdgeInsets,
-        Padding,
+        FloatingActionButton,
         SafeArea,
         Scaffold,
         StatelessWidget,
@@ -13,19 +13,24 @@ import 'package:flutter/material.dart'
 class CustomScaffold extends StatelessWidget {
   final Widget body;
   final AppBar? appBar;
+  final BottomNavigationBar? bottomNavigationBar;
+  final FloatingActionButton? floatingActionButton;
 
-  const CustomScaffold({super.key, required this.body, this.appBar});
+  const CustomScaffold({
+    super.key,
+    required this.body,
+    this.appBar,
+    this.bottomNavigationBar,
+    this.floatingActionButton,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Center(child: body),
-        ),
-      ),
+      bottomNavigationBar: bottomNavigationBar,
+      floatingActionButton: floatingActionButton,
+      body: SafeArea(child: Center(child: body)),
     );
   }
 }

@@ -4,6 +4,7 @@ import '../../features/auth/forgot_password/presentation/views/forgot_password.d
 import '../../features/auth/login/presentation/views/login_screen.dart';
 import '../../features/auth/otp_verification/presentation/views/otp_verification_screen.dart';
 import '../../features/auth/signup/presentation/views/signup_screen.dart';
+import '../../features/home/presentation/views/home_screen.dart';
 import 'app_routes.dart';
 
 // Import your screens/pages here
@@ -15,8 +16,7 @@ final GoRouter router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      // builder: (context, state) => HomeScreen(),
-      builder: (context, state) => LoginScreen(),
+      builder: (context, state) => HomeScreen(title: 'Home Screen'),
       // routes: [
       //   GoRoute(path: 'profile', builder: (context, state) => ProfileScreen()),
       // ],

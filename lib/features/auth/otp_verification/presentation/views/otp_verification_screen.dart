@@ -91,7 +91,7 @@ class _OTPVerificationCodeScreenState extends State<OTPVerificationCodeScreen> {
               pinCodeController: _pinCodeController,
               otpEndTime: _otpEndTime,
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 20.h),
 
             PrimaryButtonWidget(
               text: 'Verify',

@@ -24,7 +24,9 @@ class PrimaryOutlinedButtonWidget extends StatelessWidget {
     return OutlinedButton(
       onPressed: onPressed,
       style: Theme.of(context).outlinedButtonTheme.style?.copyWith(
-        fixedSize: WidgetStatePropertyAll(Size(width ?? 150.w, height ?? 42.h)),
+        fixedSize: WidgetStatePropertyAll(
+          Size(width ?? 150.w, height ?? (42.h + 10.w)),
+        ),
         side: WidgetStatePropertyAll<BorderSide>(
           BorderSide(color: color ?? Theme.of(context).colorScheme.primary),
         ),
