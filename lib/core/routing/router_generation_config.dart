@@ -1,4 +1,5 @@
-import 'package:finance_app/features/onboarding/views/onboarding_screen.dart';
+import 'package:finance_app/features/onboarding/presentation/views/onboarding_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart' show BlocProvider;
 import 'package:go_router/go_router.dart';
 
 import '../../features/auth/forgot_password/presentation/views/forgot_password.dart';
@@ -6,6 +7,7 @@ import '../../features/auth/login/presentation/views/login_screen.dart';
 import '../../features/auth/otp_verification/presentation/views/otp_verification_screen.dart';
 import '../../features/auth/signup/presentation/views/signup_screen.dart';
 import '../../features/home/presentation/views/home_screen.dart';
+import '../../features/onboarding/presentation/cubit/onboarding_cuibt.dart';
 import 'app_routes.dart';
 
 // Import your screens/pages here
@@ -15,7 +17,15 @@ import 'app_routes.dart';
 
 final GoRouter router = GoRouter(
   routes: [
-    GoRoute(path: '/', builder: (context, state) => OnBoardingScreen()),
+    GoRoute(
+      path: '/',
+      builder:
+          (context, state) => BlocProvider(
+            create: (_) => OnboardingCubit(pageCount: 4),
+            child: const OnBoardingScreen(),
+          ),
+    ),
+
     GoRoute(
       path: AppRoutes.home,
       builder: (context, state) => HomeScreen(title: 'Home Screen'),
