@@ -10,41 +10,32 @@ import 'package:flutter/material.dart'
         Container,
         Icon,
         Icons,
+        IndexedStack,
+        Key,
         MainAxisAlignment,
         SizedBox,
-        State,
-        StatefulWidget,
+        StatelessWidget,
         Text,
         Theme,
         Widget;
+import 'package:flutter_bloc/flutter_bloc.dart' show BlocBuilder, ReadContext;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/shared/widgets/custom_scaffold.dart';
 import '../../../../core/shared/widgets/primary_button_widget.dart';
 import '../../../../core/shared/widgets/outlined_primary_button.dart';
+import '../cubit/home_cubit.dart' show HomeCubit, HomeState;
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, required this.title});
-
+class HomeScreen extends StatelessWidget {
   final String title;
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  int _currentIndex = 0;
-  void _onItemTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
+  HomeScreen({super.key, required this.title});
 
   final List<Widget> screens = [
     Container(
       width: double.infinity,
       height: double.infinity,
-      color: Colors.blue,
+      color: Colors.teal,
       child: Column(
         spacing: 10,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -82,42 +73,47 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
   ];
 
+  var tabItems = [
+    BottomNavigationBarItem(
+      icon: Icon(Icons.home_rounded, size: 30.sp),
+      label: 'Home',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.bar_chart_rounded, size: 30.sp),
+      label: 'Statistics',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.search_rounded, size: 30.sp),
+      label: 'Search',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.shopping_cart_rounded, size: 30.sp),
+      label: 'Cart',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.person, size: 30.sp),
+      label: 'Profile',
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return CustomScaffold(
-      appBar: AppBar(title: Text(widget.title)),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Theme.of(context).colorScheme.primary,
-        unselectedItemColor: Theme.of(context).colorScheme.onSurface,
-        elevation: 1,
-        showUnselectedLabels: false,
-        currentIndex: _currentIndex,
-        onTap: _onItemTapped,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_rounded, size: 30.sp),
-            label: 'Home',
+    return BlocBuilder<HomeCubit, HomeState>(
+      builder: (context, state) {
+        final homeCubit = context.read<HomeCubit>();
+        return CustomScaffold(
+          appBar: AppBar(title: Text(title)),
+          bottomNavigationBar: BottomNavigationBar(
+            key: const Key('bottom_navigation_bar'),
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: Theme.of(context).colorScheme.primary,
+            currentIndex: state.index,
+            onTap: (newIndex) => homeCubit.setTabIndex(newIndex),
+            items: tabItems,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart_rounded, size: 30.sp),
-            label: 'Statistics',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search_rounded, size: 30.sp),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart_rounded, size: 30.sp),
-            label: 'Cart',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person, size: 30.sp),
-            label: 'Profile',
-          ),
-        ],
-      ),
-      body: screens[_currentIndex],
+          body: IndexedStack(index: state.index, children: screens),
+        );
+      },
     );
   }
 }

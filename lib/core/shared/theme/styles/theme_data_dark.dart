@@ -104,7 +104,7 @@ OutlinedButtonThemeData _getOutlinedButtonTheme() {
   return OutlinedButtonThemeData(
     style: ButtonStyle(
       backgroundColor: WidgetStatePropertyAll<Color>(
-        AppColorsDark.secondaryColor.withAlpha(10),
+        AppColorsDark.secondaryColor.withAlpha(70),
       ),
       side: WidgetStatePropertyAll<BorderSide?>(
         BorderSide(color: AppColorsDark.primaryColor, width: 1.5),

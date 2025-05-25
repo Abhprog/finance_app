@@ -6,6 +6,8 @@ import '../../features/auth/forgot_password/presentation/views/forgot_password.d
 import '../../features/auth/login/presentation/views/login_screen.dart';
 import '../../features/auth/otp_verification/presentation/views/otp_verification_screen.dart';
 import '../../features/auth/signup/presentation/views/signup_screen.dart';
+import '../../features/home/presentation/cubit/home_cubit.dart'
+    show HomeCubit, HomeState;
 import '../../features/home/presentation/views/home_screen.dart';
 import '../../features/onboarding/presentation/cubit/onboarding_cuibt.dart';
 import 'app_routes.dart';
@@ -28,7 +30,11 @@ final GoRouter router = GoRouter(
 
     GoRoute(
       path: AppRoutes.home,
-      builder: (context, state) => HomeScreen(title: 'Home Screen'),
+      builder:
+          (context, state) => BlocProvider(
+            create: (context) => HomeCubit(HomeState(index: 0)),
+            child: HomeScreen(title: 'Home Screen'),
+          ),
       // routes: [
       //   GoRoute(path: 'profile', builder: (context, state) => ProfileScreen()),
       // ],

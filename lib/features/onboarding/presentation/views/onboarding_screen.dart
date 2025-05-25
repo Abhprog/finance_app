@@ -37,15 +37,14 @@ class OnBoardingScreen extends StatefulWidget {
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   late final PageController _pageController;
-  late List<OnBoardingItemData> onBoardingData;
+  late List<OnBoardingItemData> _onBoardingData;
 
   @override
   void initState() {
     super.initState();
-    _initPageController();
     _checkFirstTime();
-
-    onBoardingData = initOnBoardingData();
+    _initPageController();
+    _initOnBoardingData();
   }
 
   Future<void> _checkFirstTime() async {
@@ -59,6 +58,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     }
   }
 
+  ///
   void _initPageController() {
     _pageController = PageController(
       initialPage: 0,
@@ -67,8 +67,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     );
   }
 
-  List<OnBoardingItemData> initOnBoardingData() {
-    return [
+  void _initOnBoardingData() {
+    _onBoardingData = [
       OnBoardingItemData(
         title: "Track Your Finances",
         subtitle: "Keep track of your income and expenses easily.",
@@ -118,11 +118,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         alignment: Alignment.bottomCenter,
         children: [
           CustomConcentricPageViewWidget(
-            onBoardingData: onBoardingData,
+            onBoardingData: _onBoardingData,
             pageController: _pageController,
           ),
           SmoothPageDotsIndicatorWidget(
-            onBoardingItemData: onBoardingData,
+            onBoardingItemData: _onBoardingData,
             pageController: _pageController,
           ),
           OnBoardingTextButtonWidget(pageController: _pageController),
